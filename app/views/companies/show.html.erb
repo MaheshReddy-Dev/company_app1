@@ -7,5 +7,5 @@
    <%= link_to 'Delete' , company_path(@company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %> |
    <%= link_to 'Return to company listing page', companies_path %> |
    <%= link_to "Add Employee", new_employee_path(company_id: @company.id) %> |
-   <%= link_to "Employees listing page", employees_path%>
+   <%= link_to "Employees listing page", employees_path%> |
    <%= link_to "Add project", new_project_path(@company.employees)%>
