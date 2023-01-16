@@ -1,0 +1,33 @@
+<h1>Edit Company</h1>
+<% if @company.errors.any? %>
+  <h2> The following reasons prevented the companies to be saved </h2>
+    <ul>
+     <%= @company.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+    </ul>
+<% end%>
+
+<%= form_with(model: @company, local: true) do |f| %>
+  <p>
+    <%= f.label :Name %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :Website %><br/>
+    <%= f.text_field :website %>
+  </p>
+  <p>
+    <%= f.label :State %><br/>
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :City %><br/>
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Cancel and Return to Companies page', companies_path %>
