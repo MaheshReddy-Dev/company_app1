@@ -1,0 +1,32 @@
+<%= form_with(model: @employee, local: true) do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phonenumber %><br/>
+    <%= f.text_field :phonenumber %>
+  </p>
+  <p>
+    <%= f.hidden_field :company_id, value: params[:company_id]%>
+  </p>
+  <p>
+    <%= f.label :Gender%> <br/>
+    <%= f.select :gender, %i{male female}, :prompt => 'Select', required: true, inclue_blank: 'Gender' %>
+  </p>
+     <p>
+       <%= f.label :salary %><br/>
+       <%= f.text_field :salary %>
+     </p>
+     <p>
+       <%= f.label :experience %><br/>
+       <%= f.text_field :experience %>
+     </p>
+  <p>
+  <%= f.submit %>
+  </p>
+<% end %>

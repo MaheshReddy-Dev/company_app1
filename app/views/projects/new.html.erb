@@ -1,19 +1,7 @@
 <h1>Create a project</h1>
-<%= render 'shared/errors', obj: @project %>
-<%= form_with(model: @project, local: true) do |f| %>
 
-  <p>
-    <%= f.label :Title %><br/>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :Description %><br/>
-    <%= f.text_area :description %>
-  </p>
-    <%= f.hidden_field :employee_id, value: params[:employee_id]%>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'shared/errors', obj: @project %>
+
+<%=render 'form', status: :unprocessable_entity %>
 
 <%= link_to 'Cancel and Return to employees page', projects_path %>

@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
   # @project = Project.find(params[:id])
   #@project.employee = Employee.find(params[:project][:employee_id])
     if @project.update(project_params)
-     redirect_to @project,
+     redirect_to @project
      flash[:notice] = "project was successfully updated."
      else
     render 'edit', status: :unprocessable_entity

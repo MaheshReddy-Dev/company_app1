@@ -1,0 +1,17 @@
+<%= form_with scope: :task, url: tasks_path, local: true do |f| %>
+  <p>
+    <%= f.label :Name %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :Description%><br/>
+    <%= f.text_area :description %>
+  </p>
+ <p>
+  <%= f.hidden_field :project_id, value: params[:project_id]%>
+ </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
