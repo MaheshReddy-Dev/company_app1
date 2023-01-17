@@ -1,14 +1,8 @@
 <h1>Create a new company</h1>
-<% if @company.errors.any? %>
-  <h2> The following reasons prevented the companies to be saved </h2>
-    <ul>
-     <%= @company.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-     <% end %>
-    </ul>
-<% end%>
+<%= render 'shared/errors', obj: @company %>
+<div id = "newform">
 
-<%= form_with scope: :company, url: companies_path, local: true do |f| %>
+<%= form_with(model: @company,  data: {remote: true}) do |f| %>
   <p>
     <%= f.label :Name %><br/>
     <%= f.text_field :name %>
@@ -28,5 +22,6 @@
   <p>
     <%= f.submit %>
   </p>
-<% end %>
+  <% end %>
+ </div>
 <%= link_to 'Return to companies page', companies_path %>

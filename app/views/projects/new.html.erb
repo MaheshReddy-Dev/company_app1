@@ -1,13 +1,5 @@
 <h1>Create a project</h1>
-<% if @project.errors.any? %>
-  <h2> The following reasons prevented the project to be saved </h2>
-    <ul>
-     <%= @project.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-     <% end %>
-    </ul>
-<% end%>
-
+<%= render 'shared/errors', obj: @project %>
 <%= form_with(model: @project, local: true) do |f| %>
 
   <p>

@@ -1,3 +1,7 @@
 <% flash.each do |name, msg| %>
-<%=msg %>
+  <%if msg == "Unauthorized action!!"%>
+    <%=msg%>
+   <%else %>
+    <%=msg %>
+  <% end %>
 <% end %>

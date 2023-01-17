@@ -1,12 +1,5 @@
 <h1>Edit Employee</h1>
-<% if @employee.errors.any? %>
-  <h2> The following reasons prevented the Employee to be saved </h2>
-    <ul>
-     <%= @employee.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-     <% end %>
-    </ul>
-<% end%>
+<%= render 'shared/errors', obj: @employee %>
 
 <%= form_with(model: @employee, local: true) do |f| %>
   <p>

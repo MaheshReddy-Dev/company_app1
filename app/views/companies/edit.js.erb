@@ -1,0 +1,7 @@
+$(document).ready(function() {
+  $('#editModal').modal('show');
+  $('#form-container').html('<%= escape_javascript(render 'companies/edit') %>');
+});
+function company_reload() {
+    window.company.reload();
+  }

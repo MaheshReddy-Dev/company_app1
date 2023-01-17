@@ -1,12 +1,5 @@
 <h1>Edit Task</h1>
-<% if @task.errors.any? %>
-  <h2> The following reasons prevented the task to be saved </h2>
-    <ul>
-     <%= @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-     <% end %>
-    </ul>
-<% end%>
+<%= render 'shared/errors', obj: @task %>
 
 <%= form_with(model: @task, local: true) do |f| %>
   <p>
