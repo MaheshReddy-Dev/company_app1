@@ -56,7 +56,7 @@ class CompaniesController < ApplicationController
   def destroy
     respond_to do |format|
        @company.destroy
-       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
+       format.html { redirect_to companies_path, notice: 'Company was successfully destroyed.' }
        format.js
      end
     #  flash[:notice] = "Company destroyed successfully"
