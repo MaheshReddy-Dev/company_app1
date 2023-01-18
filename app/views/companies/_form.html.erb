@@ -1,6 +1,6 @@
-<div id = "newform">
 
-<%= form_with(model: @company,  data: {remote: true}) do |f| %>
+
+<%= form_with(model: @company,  remote: true ) do |f| %>
   <p>
     <%= f.label :Name %><br/>
     <%= f.text_field :name %>
@@ -21,4 +21,4 @@
     <%= f.submit %>
   </p>
   <% end %>
- </div>
+ 

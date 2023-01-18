@@ -13,15 +13,13 @@
       <tr>
         <td><%= company.name %></td>
         <td><%= link_to 'Details', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company), data: { remote: true}%></td>
-        <div id="form-container"></div>
+        <td><%= link_to 'Edit', edit_company_path(company),  remote: true%></td>
+        <!-- <div id="form-container"></div> -->
         <td><%= link_to 'Delete', company_path(company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-<div id="newform">
- <%= link_to 'New Company', new_company_path , data: {remote: true}%>
-</div>
+<p>
+ <%= link_to 'New Company', new_company_path , remote: true%>
+</p>

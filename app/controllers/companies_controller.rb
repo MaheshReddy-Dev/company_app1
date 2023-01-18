@@ -27,17 +27,13 @@ class CompaniesController < ApplicationController
           format.js   { render inline: "company_reload();"}
         end
         else
-        render "new" , status: :unprocessable_entity
+          respond_to do |format|
+           format.html { render :new , status: :unprocessable_entity}
+           format.js
+          # render 'new' , status: :unprocessable_entity
+      end
       end
     end
-  #     render json: { message: "Company created successfully" }, status: :created
-  #       #   flash[:notice] = "Company Created successfully"
-  #        #redirect_to @company
-  #     else
-  #      render json: { errors: @company.errors } , status: :unprocessable_entity
-  #   #   render 'new', status: :unprocessable_entity
-  #    end
-  # end
 
  def update
     if @company.update(company_params)
@@ -48,13 +44,21 @@ class CompaniesController < ApplicationController
       #   flash[:notice] = "Company details updated successfully"
       #   redirect_to @company
      else
-        render 'edit' , status: :unprocessable_entity
+       respond_to do |format|
+        format.html { render :edit, status: :unprocessable_entity }
+        format.js
+
+      end
+      #  render 'edit' , status: :unprocessable_entity
       end
  end
 
   def destroy
-    @company.destroy
-       render json: { message: "Company deleted successfully" }, status: :ok
+    respond_to do |format|
+       @company.destroy
+       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
+       format.js
+     end
     #  flash[:notice] = "Company destroyed successfully"
     #  redirect_to companies_path
   end
