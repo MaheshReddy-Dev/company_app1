@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
      if @company.save
        respond_to do |format|
           format.html { redirect_to @company, notice: 'company was successfully Created.'}
-          format.js   { render inline: "company_reload();"}
+          format.js   { render :create_success}
         end
         else
           respond_to do |format|
@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
        respond_to do |format|
        format.html { redirect_to @company, notice: 'company was successfully updated.' }
-       format.js { render inline: "company_reload();"}
+       format.js { render :update_success}#render inline: "company_reload();"}
      end
       #   flash[:notice] = "Company details updated successfully"
       #   redirect_to @company
@@ -57,7 +57,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
        @company.destroy
        format.html { redirect_to companies_path, notice: 'Company was successfully destroyed.' }
-       format.js
+       format.js   {render :destroy_success}
      end
     #  flash[:notice] = "Company destroyed successfully"
     #  redirect_to companies_path

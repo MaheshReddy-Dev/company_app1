@@ -1,4 +1,22 @@
-<h1>Listing Companies</h1>
+<!-- index.html.erb -->
+<div id="companies-list">
+  <%= render 'companies/list' %>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $.ajax({
+      url: '/companies',
+      type: 'GET',
+      success: function(r){
+        $('#companies-list').html(r);
+      }
+    });
+  });
+</script>
+
+
+<!-- <h1>Listing Companies</h1>
 
 <table>
   <thead>
@@ -10,15 +28,15 @@
 
   <tbody>
     <% @companies.each do |company| %>
-      <tr>
+      <tr id= '<%= company.id %>' >
         <td><%= company.name %></td>
         <td><%= link_to 'Details', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company),  remote: true%></td>
-        <td><%= link_to 'Delete', company_path(company), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %></td>
+        <td class= 'destroy'>Destroy</td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <p>
  <%= link_to 'New Company', new_company_path , remote: true%>
-</p>
+</p> -->

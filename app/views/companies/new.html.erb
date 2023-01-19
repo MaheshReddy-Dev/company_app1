@@ -2,6 +2,8 @@
 
 <%= render 'shared/errors', obj: @company %>
 
-<%=render 'form', status: :unprocessable_entity %>
+<div id="new-company-form">
+  <%= render 'form' , status: :unprocessable_entity %>
+</div>
 
 <%= link_to 'Return to companies page', companies_path %>
