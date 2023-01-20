@@ -1,0 +1,10 @@
+<% if @companies %>
+  <% @companies.each do |company| %>
+   <tr id="company-<%= company.id %>">
+     <td><%= company.name %></td>
+     <td><%= link_to 'Details', company %></td>
+     <td><%= link_to 'Edit', edit_company_path(company)%></td>
+     <td><%= link_to 'Destroy', company_path(company), method: :delete,remote: true,data: { confirm: 'Are you sure you want to delete this company?' }%> </td>
+   </tr>
+  <% end %>
+<% end %>

@@ -1,23 +1,21 @@
-
-
 <%= form_with(model: @company,  remote: true ) do |f| %>
-  <p>
+  <div class="field">
     <%= f.label :Name %><br/>
     <%= f.text_field :name %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :Website %><br/>
     <%= f.text_field :website %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :State %><br/>
     <%= f.text_field :state %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :City %><br/>
     <%= f.text_field :city %>
-  </p>
-  <p>
+  </div>
+  <div class="actions">
     <%= f.submit %>
-  </p>
-  <% end %>
+  </div>
+<% end %>

@@ -3,6 +3,8 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.all
+    @company = Company.new
+    puts @companies.inspect
   end
 
   def show
@@ -21,25 +23,21 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-     if @company.save
        respond_to do |format|
-          format.html { redirect_to @company, notice: 'company was successfully Created.'}
-          format.js   { render :create_success}
-        end
+         if @company.save
+          format.html { redirect_to companies_path, notice: 'company was successfully Created.'}
+          format.js   {}
         else
-          respond_to do |format|
-           format.html { render :new , status: :unprocessable_entity}
-           format.js
-          # render 'new' , status: :unprocessable_entity
-      end
-      end
-    end
+            format.html { render :index }
+        end
+     end
+  end
 
  def update
     if @company.update(company_params)
        respond_to do |format|
        format.html { redirect_to @company, notice: 'company was successfully updated.' }
-       format.js { render :update_success}#render inline: "company_reload();"}
+       format.js   {}#render inline: "company_reload();"}
      end
       #   flash[:notice] = "Company details updated successfully"
       #   redirect_to @company
@@ -54,14 +52,12 @@ class CompaniesController < ApplicationController
  end
 
   def destroy
-    respond_to do |format|
-       @company.destroy
-       format.html { redirect_to companies_path, notice: 'Company was successfully destroyed.' }
-       format.js   {render :destroy_success}
-     end
-    #  flash[:notice] = "Company destroyed successfully"
-    #  redirect_to companies_path
+   @company.destroy
+     respond_to do |format|
+      format.js { }
+    end
   end
+
 
   private
 
