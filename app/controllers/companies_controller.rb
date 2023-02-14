@@ -3,8 +3,6 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.all
-    @company = Company.new
-    puts @companies.inspect
   end
 
   def show
@@ -15,46 +13,41 @@ class CompaniesController < ApplicationController
   end
 
     def edit
-     respond_to do |format|
-       format.html
-       format.js
-     end
-   end
+    end
 
-  def create
+   def create
     @company = Company.new(company_params)
-       respond_to do |format|
-         if @company.save
-          format.html { redirect_to companies_path, notice: 'company was successfully Created.'}
-          format.js   {}
-        else
-            format.html { render :index }
-        end
-     end
+      respond_to do |format|
+      if @company.save
+        format.turbo_stream
+        format.html { redirect_to company_url(@company), notice: "company was successfully created." }
+        format.json { render :show, status: :created, location: @company }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
- def update
-    if @company.update(company_params)
-       respond_to do |format|
-       format.html { redirect_to @company, notice: 'company was successfully updated.' }
-       format.js   {}#render inline: "company_reload();"}
-     end
-      #   flash[:notice] = "Company details updated successfully"
-      #   redirect_to @company
-     else
-       respond_to do |format|
+  def update
+    respond_to do |format|
+      if @company.update(company_params)
+        format.turbo_stream
+        format.html { redirect_to company_url(@company), notice: "Company was successfully updated." }
+        format.json { render "show", status: :ok, location: @company }
+      else
         format.html { render :edit, status: :unprocessable_entity }
-        format.js
-
+        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
-      #  render 'edit' , status: :unprocessable_entity
-      end
- end
+    end
+  end
 
   def destroy
-   @company.destroy
-     respond_to do |format|
-      format.js { }
+    @company.destroy
+      respond_to do |format|
+      format.turbo_stream
+        flash[:notice] = "project deleted successfully"
+        redirect_to companies_path
     end
   end
 

@@ -16,16 +16,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_022458) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "state"
-    t.string "city"
     t.string "website"
+    t.string "city"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
-    t.integer "company_id", null: false
+    t.bigint "company_id", null: false
     t.string "email"
     t.string "phonenumber"
     t.datetime "created_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_022458) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
-    t.integer "employee_id", null: false
+    t.bigint "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_022458) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "project_id", null: false
+    t.bigint "project_id", null: false
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false

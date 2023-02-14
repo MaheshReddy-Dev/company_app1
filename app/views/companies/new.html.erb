@@ -1,9 +1,8 @@
-<h1>Create a new company</h1>
+<%= turbo_frame_tag "new_company" do%>
 
-<%= render 'shared/errors', obj: @company %>
-
-<div id="newcompanyform">
-  <%= render 'form' , status: :unprocessable_entity %>
-</div>
-
+<div>
+<h1 class="font-bold text-4xl">New Company</h1>
+<%= render 'form' , company: @company %>
 <%= link_to 'Return to companies page', companies_path %>
+</div>
+<% end %>

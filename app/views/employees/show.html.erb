@@ -9,4 +9,4 @@
    <%= link_to 'Edit', edit_employee_path(@employee) %>
    <%= link_to 'Delete' , employee_path(@employee), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %>
    <%= link_to 'Return to employees listing page', employees_path %> |
-    <%= link_to 'Add project', new_project_path(employee_id: @employee.id)%>
+   <%= link_to 'Add project', new_project_path(employee_id: @employee.id)%>

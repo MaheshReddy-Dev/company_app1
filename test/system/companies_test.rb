@@ -14,7 +14,10 @@ class CompaniesTest < ApplicationSystemTestCase
     visit companies_url
     click_on "New company"
 
+    fill_in "City", with: @company.city
     fill_in "Name", with: @company.name
+    fill_in "State", with: @company.state
+    fill_in "Website", with: @company.website
     click_on "Create Company"
 
     assert_text "Company was successfully created"
@@ -25,7 +28,10 @@ class CompaniesTest < ApplicationSystemTestCase
     visit company_url(@company)
     click_on "Edit this company", match: :first
 
+    fill_in "City", with: @company.city
     fill_in "Name", with: @company.name
+    fill_in "State", with: @company.state
+    fill_in "Website", with: @company.website
     click_on "Update Company"
 
     assert_text "Company was successfully updated"

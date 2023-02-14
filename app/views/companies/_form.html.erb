@@ -1,21 +1,30 @@
-<%= form_with(model: @company,  remote: true ) do |f| %>
-  <div class="field">
-    <%= f.label :Name %><br/>
-    <%= f.text_field :name %>
+<%= form_with(id: "company_form",model: company, class: "contents") do |form| %>
+  <%= render "shared/errors", obj: @company %>
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="field">
-    <%= f.label :Website %><br/>
-    <%= f.text_field :website %>
+
+  <div class="my-5">
+    <%= form.label :Website %>
+    <%= form.text_field :website, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="field">
-    <%= f.label :State %><br/>
-    <%= f.text_field :state %>
+
+  <div class="my-5">
+    <%= form.label :state %>
+    <%= form.text_field :state, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="field">
-    <%= f.label :City %><br/>
-    <%= f.text_field :city %>
+
+  <div class="my-5">
+    <%= form.label :city %>
+    <%= form.text_field :city, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
+
+
+
+

@@ -2,6 +2,12 @@
 
 one:
   name: MyString
+  website: MyString
+  city: MyString
+  state: MyString
 
 two:
   name: MyString
+  website: MyString
+  city: MyString
+  state: MyString
