@@ -24,16 +24,24 @@ Things you may want to cover:
 * ...
 
 * Changed username
-<p id="notice"><%= notice %></p>
-<div class="flex justify-between items-center">
-  <h1 class="font-bold text-4xl">Companies</h1>
-  <%= turbo_frame_tag "new_company" do %>
- <%= link_to 'New Company', new_company_path, class: "rounded-lg py-3 px-5 bg-red-100 inline-block font-medium" %>
- <% end %>
-</div>
-
-
-
- <tbody id= "companies">
-	   	<%= render @companies %>
-  </tbody>
+<h1>Showing Employee details</h1>
+  <p><strong>Name: </strong><%= @employee.name %></p>
+  <p><strong>Company: </strong><%= @employee.company.name %></p>
+  <p><strong>phonenumber: </strong><%= @employee.phonenumber %></p>
+  <p><strong>Email: </strong><%= @employee.email%></p>
+  <p><strong>Gender:</strong><%=@employee.gender %></p>
+  <p><strong>Salary:</strong><%= @employee.salary%></p>
+  <p><strong>Experience:</strong><%= @employee.experience%></p>
+   <%= link_to 'Edit', edit_employee_path(@employee) %>
+   <%= link_to 'Delete' , employee_path(@employee), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %>
+   <%= link_to 'Return to employees listing page', employees_path %> |
+   <%= link_to 'Add project', new_project_path(employee_id: @employee.id)%>
+ 
+ <%if @company == Company.all%>
+  <p> 
+    <%=form.label("Select Company:")%>
+    <%= form.collection_select :company_id, Company.order(:name),:id,:name, include_blank: "-none-"%>
+  </p>
+    <%else%>
+    <%=form.hidden_field :company_id, value: params[:company_id]%>
+  <% end %>

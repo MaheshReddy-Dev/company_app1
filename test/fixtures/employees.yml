@@ -2,8 +2,16 @@
 
 one:
   name: MyString
-  company: one
+  phone_number: MyString
+  email: MyString
+  gender: MyString
+  salary: 9.99
+  experience: 1
 
 two:
   name: MyString
-  company: two
+  phone_number: MyString
+  email: MyString
+  gender: MyString
+  salary: 9.99
+  experience: 1

@@ -1,12 +1,48 @@
-<h1>Showing Employee details</h1>
-  <p><strong>Name: </strong><%= @employee.name %></p>
-  <p><strong>Company: </strong><%= @employee.company.name %></p>
-  <p><strong>phonenumber: </strong><%= @employee.phonenumber %></p>
-  <p><strong>Email: </strong><%= @employee.email%></p>
-  <p><strong>Gender:</strong><%=@employee.gender %></p>
-  <p><strong>Salary:</strong><%= @employee.salary%></p>
-  <p><strong>Experience:</strong><%= @employee.experience%></p>
-   <%= link_to 'Edit', edit_employee_path(@employee) %>
-   <%= link_to 'Delete' , employee_path(@employee), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %>
-   <%= link_to 'Return to employees listing page', employees_path %> |
-   <%= link_to 'Add project', new_project_path(employee_id: @employee.id)%>
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+    <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= @employee.name %>
+  </p>
+
+  <p class="my-5">
+   <strong class="block font-medium mb-1">Name:</strong>
+   <%= @employee.company.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone number:</strong>
+    <%= @employee.phone_number %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= @employee.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Gender:</strong>
+    <%= @employee.gender %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Salary:</strong>
+    <%= @employee.salary %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Experience:</strong>
+    <%= @employee.experience %>
+  </p>
+       
+
+    <%= link_to 'Edit this employee', edit_employee_path(@employee), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to 'Destroy this employee', employee_path(@employee), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to 'Back to employees', employees_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>

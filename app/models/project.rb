@@ -1,6 +1,6 @@
   class Project < ApplicationRecord
   belongs_to :employee
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   validates :employee_id,
              presence: true
   validates :title,

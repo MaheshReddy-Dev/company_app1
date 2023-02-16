@@ -1,32 +1,41 @@
-<%= form_with(model: @employee, local: true) do |f| %>
-  <p>
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br/>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :phonenumber %><br/>
-    <%= f.text_field :phonenumber %>
-  </p>
-  <p>
-    <%= f.hidden_field :company_id, value: params[:company_id]%>
-  </p>
-  <p>
-    <%= f.label :Gender%> <br/>
-    <%= f.select :gender, %i{male female}, :prompt => 'Select', required: true, inclue_blank: 'Gender' %>
-  </p>
-     <p>
-       <%= f.label :salary %><br/>
-       <%= f.text_field :salary %>
-     </p>
-     <p>
-       <%= f.label :experience %><br/>
-       <%= f.text_field :experience %>
-     </p>
-  <p>
-  <%= f.submit %>
-  </p>
+<%= form_with(model: employee, class: "contents") do |form| %>
+  <%= render "shared/errors", obj: @employee%>
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :salary %>
+    <%= form.text_field :salary, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%=form.hidden_field :company_id, value: params[:company_id]%>
+  </div>
+
+
+  <div class="my-5">
+    <%= form.label :experience %>
+    <%= form.number_field :experience, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
 <% end %>

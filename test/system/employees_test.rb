@@ -14,8 +14,12 @@ class EmployeesTest < ApplicationSystemTestCase
     visit employees_url
     click_on "New employee"
 
-    fill_in "Company", with: @employee.company_id
+    fill_in "Email", with: @employee.email
+    fill_in "Experience", with: @employee.experience
+    fill_in "Gender", with: @employee.gender
     fill_in "Name", with: @employee.name
+    fill_in "Phone number", with: @employee.phone_number
+    fill_in "Salary", with: @employee.salary
     click_on "Create Employee"
 
     assert_text "Employee was successfully created"
@@ -26,8 +30,12 @@ class EmployeesTest < ApplicationSystemTestCase
     visit employee_url(@employee)
     click_on "Edit this employee", match: :first
 
-    fill_in "Company", with: @employee.company_id
+    fill_in "Email", with: @employee.email
+    fill_in "Experience", with: @employee.experience
+    fill_in "Gender", with: @employee.gender
     fill_in "Name", with: @employee.name
+    fill_in "Phone number", with: @employee.phone_number
+    fill_in "Salary", with: @employee.salary
     click_on "Update Employee"
 
     assert_text "Employee was successfully updated"

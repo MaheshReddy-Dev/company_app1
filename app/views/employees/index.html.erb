@@ -1,38 +1,14 @@
-<h1>Listing Employees</h1>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Company</th>
-      <th>Gender</th>
-      <th>experience</th>
-      <th>salary</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Employees</h1>
+    <%= link_to 'New employee', new_employee_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
 
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= employee.phonenumber %></td>
-        <td><%= employee.email %></td>
-        <td><%= employee.company.name%></td>
-        <td><%= employee.gender%></td>
-        <td><%= employee.experience%></td>
-        <td><%= employee.salary%></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Delete', employee_path(employee), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Employee', new_employee_path %> |
-<%= link_to 'Companies listing page' , companies_path %>
+  <div id="employees" class="min-w-full">
+    <%= render @employees %>
+  </div>
+</div>

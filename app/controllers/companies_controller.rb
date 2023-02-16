@@ -44,12 +44,13 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company.destroy
-      respond_to do |format|
+    respond_to do |format|
       format.turbo_stream
-        flash[:notice] = "project deleted successfully"
-        redirect_to companies_path
+      format.html { redirect_to companies_path, notice: "Company was successfully deleted." }
+      format.json { head :no_content }
     end
   end
+  
 
 
   private

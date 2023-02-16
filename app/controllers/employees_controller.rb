@@ -1,59 +1,70 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[ show edit update destroy ]
 
+
   def index
-   @employees = Employee.all
+    @employees = Employee.all
   end
 
-
+  
   def show
   end
 
-  def edit
-  end
-
-
+  
   def new
     @employee = Employee.new
   end
 
-
-  def create
-    @employee = Employee.new(employee_params)
-     if @employee.save
-       redirect_to @employee
-       flash[:notice] =  "Employee was successfully created."
-     else
-      render 'new' , status: :unprocessable_entity
-     end
+  
+  def edit
   end
 
+  
+  def create
+    @employee = Employee.new(employee_params)
 
- def update
-   # @employee= Employee.find(params[:id])
-   #@employee.project = Project.find(params[:employee][:company_id])
-   if @employee.update(employee_params)
-     redirect_to @employee
-     flash[:notice] = "Employee was successfully updated."
-    else
-    render 'edit', status: :unprocessable_entity
-   end
- end
+    respond_to do |format|
+      if @employee.save
+        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
+        format.json { render :show, status: :created, location: @employee }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @employee.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
+  
+  def update
+    respond_to do |format|
+      if @employee.update(employee_params)
+        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully updated." }
+        format.json { render :show, status: :ok, location: @employee }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @employee.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-
+  
   def destroy
     @employee.destroy
-    flash[:notice] = "Employee fired successfully"
-    redirect_to employees_path
+
+    respond_to do |format|
+      format.html { redirect_to employees_url, notice: "Employee was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   private
+    
     def set_employee
       @employee = Employee.find(params[:id])
     end
 
+    
     def employee_params
-      params.require(:employee).permit(:name, :company_id,:gender,:email, :phonenumber,:salary,:experience)
+      params.require(:employee).permit(:name, :phone_number, :email, :gender, :salary, :experience, :company_id)
     end
 end
