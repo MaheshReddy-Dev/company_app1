@@ -21,10 +21,8 @@ class CompaniesController < ApplicationController
       if @company.save
         format.turbo_stream
         format.html { redirect_to company_url(@company), notice: "company was successfully created." }
-        format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,10 +32,8 @@ class CompaniesController < ApplicationController
       if @company.update(company_params)
         format.turbo_stream
         format.html { redirect_to company_url(@company), notice: "Company was successfully updated." }
-        format.json { render "show", status: :ok, location: @company }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,7 +43,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to companies_path, notice: "Company was successfully deleted." }
-      format.json { head :no_content }
+      head :no_content
     end
   end
   

@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "projects" do %>
+    <%= render @project %>
+<% end %>
+<%= turbo_stream.replace "project_form" do %>
+ <%= render "form", project: Project.new %>
+<% end %>

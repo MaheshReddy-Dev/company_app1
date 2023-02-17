@@ -1,4 +1,4 @@
-<%= turbo_frame_tag company do %>
+<%= turbo_frame_tag employee do %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= employee.name %>
@@ -11,8 +11,9 @@
 
 
   <% if action_name != "show" %>
-    <%= link_to "Show this employee", employee, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this employee", employee,data: {turbo_frame: "_top"}, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this employee', edit_employee_path(employee), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Destroy this employee", employee_path(employee),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'},class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
     <hr class="mt-6">
   <% end %>
 <% end %>

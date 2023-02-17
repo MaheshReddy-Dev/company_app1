@@ -1,19 +1,10 @@
-<h1>Edit Projects</h1>
-<%= render 'shared/errors', obj: @project %>
+<%= turbo_frame_tag @project do %>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing project</h1>
 
-<%= form_with(model: @project, local: true) do |f| %>
-  <p>
-    <%= f.label :Title %><br/>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :Description %><br/>
-    <%= f.text_area :description%>
-  </p>
-  <p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= render "form", project: @project %>
+
+  <%= link_to "Show this project", @project, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to projects", projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>
 <% end %>
-
-<%= link_to 'Cancel and Return to employees page', projects_path %>

@@ -45,3 +45,32 @@ Things you may want to cover:
     <%else%>
     <%=form.hidden_field :company_id, value: params[:company_id]%>
   <% end %>
+
+  Project
+    class Project < ApplicationRecord
+  belongs_to :employee
+  has_many :tasks, dependent: :destroy
+  validates :employee_id,
+             presence: true
+  validates :title,
+             presence: true,
+             uniqueness: {case_sensitive: false},
+             length: { minimum: 3, maximum: 25 }
+  validates :description,
+             presence: true
+
+  end
+Task
+class Task < ApplicationRecord
+  belongs_to :project
+  validates :project_id,
+             presence: true
+  validates :name,
+             presence: true,
+             uniqueness: {case_sensitive: false},
+             length: { minimum: 3, maximum: 25 }
+  validates :description,
+             presence: true,
+             uniqueness: {case_sensitive: false},
+             length: { minimum: 6, maximum: 100 }
+end

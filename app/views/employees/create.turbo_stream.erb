@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "employees" do %>
+    <%= render @employee %>
+<% end %>
+<%= turbo_stream.replace "employee_form" do %>
+ <%= render "form", employee: Employee.new %>
+<% end %>

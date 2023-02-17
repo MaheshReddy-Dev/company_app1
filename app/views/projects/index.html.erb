@@ -1,30 +1,16 @@
-<h1>Listing Projects</h1>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>employee</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Projects</h1>
+    <%= turbo_frame_tag "new_project" do %>
+    <%= link_to 'New project', new_project_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %> 
+    </div>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.description%></td>
-        <td><%= project.employee.name %></td>
-        <td><%= link_to 'Show', project_path(project) %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-   <td><%= link_to 'Delete', project_path(project), data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'} %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %> |
-<%= link_to 'Return to employees listing page', employees_path %>
+  <div id="projects" class="min-w-full">
+    <%= render @projects %>
+  </div>
+</div>

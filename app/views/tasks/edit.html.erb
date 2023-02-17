@@ -1,18 +1,10 @@
-<h1>Edit Task</h1>
-<%= render 'shared/errors', obj: @task %>
+<%= turbo_frame_tag @task do %>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing task</h1>
 
-<%= form_with(model: @task, local: true) do |f| %>
-  <p>
-    <%= f.label :Name %><br/>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :Description%><br/>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= render "form", task: @task %>
+
+  <%= link_to "Show this task", @task, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to tasks", tasks_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>
 <% end %>
-
-<%= link_to 'Cancel and Return to tasks page', tasks_path %>
